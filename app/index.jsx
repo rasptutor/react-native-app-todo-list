@@ -11,11 +11,11 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import Octicons from '@expo/vector-icons/Octicons'
 
-export default function Index() {
+export default function Index() {  
   const [todos, setTodos] = useState([])
   const [text, setText] = useState('')
   const { colorScheme, setColorScheme, theme } = useContext(ThemeContext)
-  const router = useRouter()
+  const router = useRouter()  
 
   const [loaded, error] = useFonts({
     Inter_500Medium,
@@ -73,8 +73,12 @@ export default function Index() {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  const handlePress = (id) => {
+  const handlePress = (id) => {    
     router.push(`/todos/${id}`)
+  }
+
+  const handlePressFeed = () => {
+    router.push('/feed')
   }
   
   const renderItem = ({ item }) => (
@@ -126,6 +130,11 @@ export default function Index() {
         itemLayoutAnimation={LinearTransition}
         keyboardDismissMode="on-drag"
       />
+      <View >
+        <Pressable onPress={() => handlePressFeed()} style={styles.addButton}>
+          <Text style={styles.addButtonText}>Video Feed</Text>
+        </Pressable>
+      </View>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
     </SafeAreaView>
     

@@ -9,6 +9,7 @@ export default function RootLayout() {
     <Stack options={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="todos/[id]" />
+      <Stack.Screen name="feed" />
     </Stack>
   </SafeAreaProvider>
   </ThemeProvider>
